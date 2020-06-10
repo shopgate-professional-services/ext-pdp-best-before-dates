@@ -1,0 +1,6 @@
+{
+  "pdp_best_before_dates": {
+    "label": "Discount due to short BBD:",
+    "line": "{label} ({value})"
+  }
+}

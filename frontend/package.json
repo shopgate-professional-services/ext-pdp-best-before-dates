@@ -1,0 +1,21 @@
+{
+  "name": "@shopgate-project/pdp-best-before-dates",
+  "version": "1.0.0",
+  "description": "Product best before dates",
+  "license": "Apache-2.0",
+  "scripts": {
+    "lint": "eslint --ext .js --ext .jsx --ext .json ."
+  },
+  "devDependencies": {
+    "@shopgate/engage": "^6.11.0",
+    "@shopgate/eslint-config": "^6.11.0",
+    "eslint": "^6.8.0"
+  },
+  "peerDependencies": {
+    "@shopgate/engage": "^6.11.0",
+    "@shopgate/eslint-config": "^6.11.0",
+    "react-redux": "^5.1.2",
+    "reselect": "^3.0.1",
+    "glamor": "^2.20.40"
+  }
+}
