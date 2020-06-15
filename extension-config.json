@@ -1,0 +1,43 @@
+{
+  "version": "1.0.0",
+  "id": "@shopgate-project/pdp-best-before-dates",
+  "components": [
+     {
+      "id": "PdpAfterAvailability",
+      "path": "frontend/portals/PdpAfterAvailability",
+      "target": "product.header.after",
+      "type": "portals"
+    },
+    {
+      "type": "translations",
+      "path": "frontend/locale/en-US.json",
+      "id": "locale/en-US"
+    },
+    {
+      "type": "translations",
+      "path": "frontend/locale/de-DE.json",
+      "id": "locale/de-DE"
+    }
+  ],
+  "configuration": {
+    "styles": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": null,
+      "params": {
+        "label": "Styles for BDD block as glamor object",
+        "type": "json"
+      }
+    },
+    "bbdProperty": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": null,
+      "params": {
+        "label": "Property name with BBD date",
+        "type": "text"
+      }
+    }
+  },
+  "steps": []
+}

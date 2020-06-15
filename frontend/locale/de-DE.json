@@ -1,0 +1,6 @@
+{
+  "pdp_best_before_dates": {
+    "label": "Abverkaufsrabatt wegen kurzem MHD:",
+    "line": "{label} ({value})"
+  }
+}
