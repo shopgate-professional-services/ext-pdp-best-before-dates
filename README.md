@@ -8,12 +8,17 @@ Show best before dates on product details page for simple and product variants.
 
 Set the following values in your Shopgate Connect Admin:
 * `bbdProperty` - (string) The property name with BBD date
+* `styles` - (json) Styles for BDD block as glamor object
 
 ### Example of configuration
 
 ```json
 {
-    "bbdProperty": "mhd_date"
+    "bbdProperty": "mhd_date",
+    "styles": {
+      "background": "#f2dede",
+      "color": "#a94442"
+    }
 }
 ```
 
