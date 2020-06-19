@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { getProductVariants } from '@shopgate/engage/product';
+import { getBaseProduct, getProductVariants } from '@shopgate/engage/product';
 import { bbdProperty } from '../config';
 
 /**
@@ -23,34 +23,48 @@ const getBestBeforeLineFromProduct = (productData) => {
  * @returns {null|Object[]}
  */
 export const getBestBeforeLines = createSelector(
+  getBaseProduct,
   getProductVariants,
-  (variants) => {
-    if (!variants) {
+  (baseProduct, variants) => {
+    if (!baseProduct) {
       return null;
     }
 
-    const lines = variants.products.map((variant) => {
-      const property = getBestBeforeLineFromProduct(variant);
-      if (!property || !property.value) {
-        return null;
-      }
-
-      // Map characteristics into human presentation
-      const labels = Object.keys(variant.characteristics).reduce((acc, charId) => {
-        const { values } = variants.characteristics.find(ch => ch.id === charId);
-        const { label } = values.find(v => v.id === variant.characteristics[charId]) || {};
-        if (label) {
-          acc.push(label);
+    if (variants) {
+      const variantsLines = variants.products.map((variant) => {
+        const property = getBestBeforeLineFromProduct(variant);
+        if (!property || !property.value) {
+          return null;
         }
-        return acc;
-      }, []);
 
-      return {
-        ...property,
-        label: labels.join(' ').trim(),
-      };
-    }).filter(Boolean);
+        // Map characteristics into human presentation
+        const labels = Object.keys(variant.characteristics).reduce((acc, charId) => {
+          const { values } = variants.characteristics.find(ch => ch.id === charId);
+          const { label } = values.find(v => v.id === variant.characteristics[charId]) || {};
+          if (label) {
+            acc.push(label);
+          }
+          return acc;
+        }, []);
 
-    return lines.length ? lines : null;
+        return {
+          ...property,
+          label: labels.join(' ').trim(),
+        };
+      }).filter(Boolean);
+      if (variantsLines.length) {
+        return variantsLines;
+      }
+    }
+
+    const baseProductProperty = getBestBeforeLineFromProduct(baseProduct);
+    if (baseProductProperty && baseProductProperty.value) {
+      // Simple products or base product info
+      return [{
+        ...baseProductProperty,
+        label: '',
+      }];
+    }
+    return null;
   }
 );
