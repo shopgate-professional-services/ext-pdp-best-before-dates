@@ -1,6 +1,6 @@
 {
   "name": "@shopgate-project/pdp-best-before-dates",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Product best before dates",
   "license": "Apache-2.0",
   "scripts": {
